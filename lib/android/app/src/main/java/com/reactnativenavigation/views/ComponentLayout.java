@@ -1,16 +1,16 @@
 package com.reactnativenavigation.views;
 
-import android.annotation.*;
-import android.content.*;
-import android.view.*;
-import android.widget.*;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.view.View;
+import android.widget.RelativeLayout;
 
-import com.facebook.react.uimanager.events.*;
-import com.reactnativenavigation.parse.*;
-import com.reactnativenavigation.presentation.*;
-import com.reactnativenavigation.viewcontrollers.ComponentViewController.*;
+import com.reactnativenavigation.parse.Options;
+import com.reactnativenavigation.presentation.OptionsPresenter;
+import com.reactnativenavigation.viewcontrollers.ComponentViewController.IReactView;
 
-import static android.view.ViewGroup.LayoutParams.*;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 @SuppressLint("ViewConstructor")
 public class ComponentLayout extends RelativeLayout implements ReactComponent, TitleBarButton.OnClickListener {
@@ -19,10 +19,10 @@ public class ComponentLayout extends RelativeLayout implements ReactComponent, T
     private IReactView reactView;
     private final OptionsPresenter optionsPresenter;
 
-	public ComponentLayout(Context context, IReactView reactView, EventDispatcher eventDispatcher) {
+	public ComponentLayout(Context context, IReactView reactView) {
 		super(context);
 		this.reactView = reactView;
-		this.topBar = new TopBar(context, reactView.asView(), this, eventDispatcher);
+		this.topBar = new TopBar(context, reactView.asView(), this);
         optionsPresenter = new OptionsPresenter(this);
         initViews();
     }

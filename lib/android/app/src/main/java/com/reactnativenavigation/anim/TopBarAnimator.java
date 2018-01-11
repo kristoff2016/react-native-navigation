@@ -15,15 +15,17 @@ import com.reactnativenavigation.views.TopBar;
 public class TopBarAnimator {
 
     private static final int DURATION_TOPBAR = 300;
-    private DecelerateInterpolator decelerateInterpolator;
-    private AccelerateInterpolator accelerateInterpolator;
+    private final DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator();
+    private final AccelerateInterpolator accelerateInterpolator = new AccelerateInterpolator();
 
     private TopBar topBar;
     private View contentView;
 
+    public TopBarAnimator(TopBar topBar) {
+        this.topBar = topBar;
+    }
+
     public TopBarAnimator(TopBar topBar, View contentView) {
-        decelerateInterpolator = new DecelerateInterpolator();
-        accelerateInterpolator = new AccelerateInterpolator();
         this.topBar = topBar;
         this.contentView = contentView;
     }

@@ -4,6 +4,7 @@ package com.reactnativenavigation.anim;
 import android.view.View;
 
 import com.facebook.react.uimanager.events.EventDispatcher;
+import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.interfaces.ScrollEventListener;
 import com.reactnativenavigation.utils.UiThread;
 import com.reactnativenavigation.views.TopBar;
@@ -16,10 +17,10 @@ public class TopBarCollapseBehavior {
     private boolean dragStarted;
     private TopBarAnimator animator;
 
-    public TopBarCollapseBehavior(EventDispatcher eventDispatcher, TopBar topBar) {
-        this.eventDispatcher = eventDispatcher;
+    public TopBarCollapseBehavior(TopBar topBar) {
+        this.eventDispatcher = NavigationApplication.get(topBar.getContext()).getEventDispatcher();
         this.topBar = topBar;
-        this.animator = new TopBarAnimator(topBar, null);
+        this.animator = new TopBarAnimator(topBar);
     }
 
     public void enableCollapse() {

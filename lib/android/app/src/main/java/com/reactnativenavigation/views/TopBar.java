@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.facebook.react.uimanager.events.EventDispatcher;
 import com.reactnativenavigation.anim.TopBarAnimator;
 import com.reactnativenavigation.anim.TopBarCollapseBehavior;
 import com.reactnativenavigation.parse.Button;
@@ -32,10 +31,10 @@ public class TopBar extends AppBarLayout {
     private final TopBarAnimator animator;
     private TopTabs topTabs;
 
-    public TopBar(final Context context, View contentView, TitleBarButton.OnClickListener onClickListener, EventDispatcher eventDispatcher) {
+    public TopBar(final Context context, View contentView, TitleBarButton.OnClickListener onClickListener) {
         super(context);
         this.onClickListener = onClickListener;
-        collapsingBehavior = new TopBarCollapseBehavior(eventDispatcher, this);
+        collapsingBehavior = new TopBarCollapseBehavior(this);
         titleBar = new Toolbar(context);
         topTabs = new TopTabs(getContext());
         this.animator = new TopBarAnimator(this, contentView);
